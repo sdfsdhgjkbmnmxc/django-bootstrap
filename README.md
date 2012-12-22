@@ -14,3 +14,23 @@ INSTALLED_APPS = (
 )
 ```
 
+Usage:
+```html
+{% extends "djbootstrap/base.html" %}
+{% load djbootstrap %}
+
+{% block title %}my page{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+{% endlbock %}
+
+{% block body %}
+    {{ block.super }}
+    <form>
+        bootstrap-like form:
+        {% show_form form %}
+        {# or {% show_wide_form form %} #}
+    </form>
+{% endblock %}
+```
