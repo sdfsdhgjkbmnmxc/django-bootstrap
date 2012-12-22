@@ -1,0 +1,43 @@
+{% csrf_token %}
+
+{% if form.non_field_errors %}
+    <div class="alert alert-error">
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}
+
+{% for field in fields %}
+    {% if field.is_hidden %}
+        {{ field }}
+        {% if field.errors %}<span class="error">{{ field.label_tag }}: {{ field.errors }}</span>{% endif %}
+    {% else %}
+        <div class="control-group {% if field.errors %}error{% endif %}">
+            {% if not field.is_checkbox %}
+                <label class="control-label">
+                {{ field.label_tag }}
+                {% comment %}
+                {% if field.field.required %}<sup class="required">*</sup>{% endif %}
+                {% endcomment %}
+                </label>
+            {% endif %}
+            <div class="controls">
+                {% if field.is_checkbox %}
+                    <label class="checkbox" {{ field.label_attrs }}>
+                        {{ field }}
+                        {{ field.label_text }}
+                    </label>
+                {% else %}
+                    {{ field }}
+                {% endif %}
+                {% if field.errors %}
+                    <div class="help-inline">{{ field.errors }}</div>
+                {% endif %}
+                {% if field.help_text %}
+                    <p class="help-block">
+                        {{ field.help_text }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
