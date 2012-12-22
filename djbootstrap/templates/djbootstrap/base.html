@@ -3,10 +3,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %}title{% endblock title %}</title>
     <link rel="shortcut icon" href="{% block favicon_url %}/favicon.ico{% endblock %}" type="image/x-icon" />
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}bootstrap/css/font-awesome.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}dontpanic.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    {% block fonts %}
+        <link href="{{ STATIC_URL }}bootstrap/css/font-awesome.css" rel="stylesheet">
+    {% endblock %}
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script type="text/javascript" src="{% block jquery_url %}//yandex.st/jquery/1.7.2/jquery.min.js{% endblock %}"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
