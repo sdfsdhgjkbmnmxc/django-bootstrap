@@ -7,12 +7,12 @@ from django.utils.safestring import mark_safe
 register = Library()
 
 
-@register.inclusion_tag('bootstrap/form.html')
+@register.inclusion_tag('djbootstrap/form.html')
 def show_form(form):
     return _show_form(form)
 
 
-@register.inclusion_tag('bootstrap/wide_form.html')
+@register.inclusion_tag('djbootstrap/wide_form.html')
 def show_wide_form(form):
     return _show_form(form)
 
