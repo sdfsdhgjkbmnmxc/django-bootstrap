@@ -13,31 +13,29 @@
     {% else %}
         <div class="control-group {% if field.errors %}error{% endif %}">
             {% if not field.is_checkbox %}
-                <label class="control-label">
-                {{ field.label_tag }}
-                {% comment %}
-                {% if field.field.required %}<sup class="required">*</sup>{% endif %}
-                {% endcomment %}
+                <label class="checkbox control-label" {{ field.label_attrs }}>
+                    {{ field.label_text }}
+                    &nbsp;
                 </label>
             {% endif %}
-            <div class="controls">
-                {% if field.is_checkbox %}
-                    <label class="checkbox" {{ field.label_attrs }}>
+                <div class="controls">
+                    {% if field.is_checkbox %}
+                        <label class="checkbox" {{ field.label_attrs }}>
+                            {{ field }}
+                            {{ field.label_text }}
+                            {% if field.field.required %}<sup class="required">*</sup>{% endif %}
+                        </label>
+                    {% else %}
                         {{ field }}
-                        {{ field.label_text }}
-                    </label>
-                {% else %}
-                    {{ field }}
-                {% endif %}
-                {% if field.errors %}
-                    <div class="help-inline">{{ field.errors }}</div>
-                {% endif %}
-                {% if field.help_text %}
-                    <p class="help-block">
-                        {{ field.help_text }}
-                    </p>
-                {% endif %}
-            </div>
+                        {% if field.field.required %}<sup class="required">*</sup>{% endif %}
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="help-inline">{{ field.errors }}</div>
+                    {% endif %}
+                    {% if field.help_text %}
+                        <p class="help-block">{{ field.help_text }}</p>
+                    {% endif %}
+                </div>
         </div>
     {% endif %}
 {% endfor %}
