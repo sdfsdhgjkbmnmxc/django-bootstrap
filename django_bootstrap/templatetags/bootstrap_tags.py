@@ -8,12 +8,12 @@ register = Library()
 
 
 @register.inclusion_tag('bootstrap/form.html')
-def show_form(form):
+def bootstrap_form(form):
     return _show_form(form)
 
 
 @register.inclusion_tag('bootstrap/wide_form.html')
-def show_wide_form(form):
+def bootstrap_wide_form(form):
     return _show_form(form)
 
 
